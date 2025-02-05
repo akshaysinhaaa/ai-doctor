@@ -1,3 +1,4 @@
+import { ModeToggle } from '@/components/modetoggle'
 import React from 'react'
 
 type Props = {}
@@ -8,7 +9,9 @@ const HomeComponent = (props: Props) => {
       <div className='flex flex-col'>
         <header className='sticky top-0 z-10 h-[57px] bg-background flex items-center gap-1 border-b px-4'>
           <h1 className='text-xl font-semibold text-[#D90013]'>AI Doctor</h1>
-          <div className='w-full flex flex-row justify-end gap-2'></div>
+          <div className='w-full flex flex-row justify-end gap-2'>
+            <ModeToggle />
+          </div>
         </header>
       </div>
     </div>
@@ -17,4 +20,3 @@ const HomeComponent = (props: Props) => {
 
 export default HomeComponent
 
-//akshay sinha
