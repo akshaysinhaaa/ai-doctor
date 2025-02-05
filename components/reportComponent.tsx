@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { Label } from './ui/label'
@@ -10,6 +10,7 @@ type Props = {}
 
 const ReportComponent = (props: Props) => {
     const { toast } = useToast()
+    const [base64Data, setBase64Data] = useState("");
     function handleReportSelection(event: ChangeEvent<HTMLInputElement>): void {
         if(!event.target.files) return;
         const file = event.target.files[0];
@@ -40,6 +41,7 @@ const ReportComponent = (props: Props) => {
                 reader.onload = () => {
                     const fileContent = reader.result as string;
                     console.log(fileContent);
+                    setBase64Data(fileContent);
                 }
                 reader.readAsDataURL(file);
             }
@@ -50,6 +52,7 @@ const ReportComponent = (props: Props) => {
                 reader.onload = () => {
                     const fileContent = reader.result as string;
                     console.log(fileContent);
+                    setBase64Data(fileContent);
                 }
                 reader.readAsDataURL(compressedFile);
                 })
@@ -57,8 +60,30 @@ const ReportComponent = (props: Props) => {
         }
     }
 
-    function extractDetails(): void {
-        throw new Error('Function not implemented.')
+    async function extractDetails(): void {
+        if(!base64Data){
+            toast({
+                description: "Upload a valid report file",
+                variant: 'destructive'
+            })
+            return
+        }
+        const response = await fetch(
+            'api/extractreportgemini',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    base64: base64Data
+                })
+            }
+        )
+        if(response.ok){
+            const reportText = await response.text();
+            console.log(reportText);
+        }
     }
 
   return (
