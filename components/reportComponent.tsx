@@ -11,6 +11,7 @@ type Props = {}
 const ReportComponent = (props: Props) => {
     const { toast } = useToast()
     const [base64Data, setBase64Data] = useState("");
+    const [reportData, setReportData] = useState("");
     function handleReportSelection(event: ChangeEvent<HTMLInputElement>): void {
         if(!event.target.files) return;
         const file = event.target.files[0];
@@ -60,7 +61,7 @@ const ReportComponent = (props: Props) => {
         }
     }
 
-    async function extractDetails(): void {
+    async function extractDetails(): Promise<void> {
         if(!base64Data){
             toast({
                 description: "Upload a valid report file",
@@ -82,7 +83,7 @@ const ReportComponent = (props: Props) => {
         )
         if(response.ok){
             const reportText = await response.text();
-            console.log(reportText);
+            setReportData(reportText);
         }
     }
 
@@ -99,6 +100,10 @@ const ReportComponent = (props: Props) => {
                 history and symptoms.'
                 className='min-h-72 resize-none border-0 p-3 shadow-none
                 focus-visible:ring-0'
+                value={reportData}
+                onChange={(e)=>{
+                    setReportData(e.target.value);
+                }}
             />
             <Button variant={'destructive'} className='bg-[#D90013]'>Looks Good</Button>
         </fieldset>
