@@ -6,12 +6,15 @@ import { Textarea } from './ui/textarea'
 import { useToast } from "@/hooks/use-toast"
 
 
-type Props = {}
+type Props = {
+    onReportConfirmation: (data: string) => void 
+}
 
-const ReportComponent = (props: Props) => {
+const ReportComponent = ({ onReportConfirmation }: Props) => {
     const { toast } = useToast()
     const [base64Data, setBase64Data] = useState("");
     const [reportData, setReportData] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     function handleReportSelection(event: ChangeEvent<HTMLInputElement>): void {
         if(!event.target.files) return;
         const file = event.target.files[0];
@@ -69,6 +72,7 @@ const ReportComponent = (props: Props) => {
             })
             return
         }
+        setIsLoading(true);
         const response = await fetch(
             'api/extractreportgemini',
             {
@@ -84,6 +88,7 @@ const ReportComponent = (props: Props) => {
         if(response.ok){
             const reportText = await response.text();
             setReportData(reportText);
+            setIsLoading(false);
         }
     }
 
@@ -91,6 +96,8 @@ const ReportComponent = (props: Props) => {
     <div className='grid w-full items-start gap-6 overflow-auto p-4 pt-0'>
         <fieldset className='relative grid gap-6 rounded-large border p-4'>
             <legend className='text-sm font-medium'>Report</legend>
+            {isLoading && <div className='absolute z-10 h-full w-full bg-card/90 rounded-lg flex
+            flex-row items-center justify-center'>processing...</div>}
             <Input type='file' onChange={handleReportSelection}/>
             <Button onClick={extractDetails}>Upload File</Button>
             <Label>Report Summary</Label>
@@ -105,7 +112,11 @@ const ReportComponent = (props: Props) => {
                     setReportData(e.target.value);
                 }}
             />
-            <Button variant={'destructive'} className='bg-[#D90013]'>Looks Good</Button>
+            <Button variant={'destructive'} className='bg-[#D90013]'
+                onClick={() => {
+                    onReportConfirmation(reportData);
+                }}
+            >Looks Good</Button>
         </fieldset>
     </div>
   )
