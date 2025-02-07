@@ -3,13 +3,18 @@ import React from 'react'
 import { useChat } from 'ai/react';
 import { Badge } from "@/components/ui/badge"
 import MessageBox from './messageBox';
+import { Textarea } from './ui/textarea';
+import { Button } from './ui/button';
+import { CornerDownLeft, Loader, Loader2 } from 'lucide-react';
 
 type Props = {
     reportData: string
 }
 
 const ChatComponent = ({ reportData }: Props) => {
-    const { messages, input, handleInputChange, handleSubmit, isLoading, data } = useChat();
+    const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+        api: '/api/medichatgemini',
+    });
 
   return (
     <div className='h-full bg-muted/50 relative flex flex-col min-h-[50vh] rounded-xl p-4 gap-4'>
@@ -23,7 +28,23 @@ const ChatComponent = ({ reportData }: Props) => {
                 })
             }
         </div>
-
+        <form className='relative overflow-hidden rounded-lg border bg-background'
+        onSubmit={handleSubmit}
+        >
+            <Textarea value={input} onChange={handleInputChange}
+                placeholder='Type your query here...'
+                className='min-h-12 resize-none border-0 p-3 shadow-none 
+                focus-visible:ring-0'
+            />
+            <div className='flex items-center p-3 pt-0'>
+                <Button disabled={isLoading} className='ml-auto' type='submit' size={'sm'}>
+                    { !isLoading ? "Analyzing..." : "Ask"}
+                    { isLoading ? <Loader2 className='size-3.5 animate-spin'/> : 
+                    <CornerDownLeft className='size-3.5'/>}
+            
+                </Button>
+            </div>
+        </form>    
     </div>
   )
 }
