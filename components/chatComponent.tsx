@@ -13,7 +13,7 @@ type Props = {
 
 const ChatComponent = ({ reportData }: Props) => {
     const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-        api: '/api/medichatgemini',
+        api: 'api/medichatgemini',
     });
 
   return (
@@ -29,7 +29,14 @@ const ChatComponent = ({ reportData }: Props) => {
             }
         </div>
         <form className='relative overflow-hidden rounded-lg border bg-background'
-        onSubmit={handleSubmit}
+        onSubmit={(event)=>{
+            event.preventDefault();
+            handleSubmit(event, {
+                data: {
+                    reportData : reportData
+                }
+            });
+        }}
         >
             <Textarea value={input} onChange={handleInputChange}
                 placeholder='Type your query here...'
@@ -38,7 +45,7 @@ const ChatComponent = ({ reportData }: Props) => {
             />
             <div className='flex items-center p-3 pt-0'>
                 <Button disabled={isLoading} className='ml-auto' type='submit' size={'sm'}>
-                    { !isLoading ? "Analyzing..." : "Ask"}
+                    { !isLoading ? "Ask" : "Analyzing..."}
                     { isLoading ? <Loader2 className='size-3.5 animate-spin'/> : 
                     <CornerDownLeft className='size-3.5'/>}
             
