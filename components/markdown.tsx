@@ -11,6 +11,7 @@ type Props = {
 
 const Markdown = ({ content }: Props) => {
     const html = md.render(content);
+    const purifiedHtml = DOMPurify.sanitize(html);
     return (
         <div dangerouslySetInnerHTML={{ __html: html}} />
     )

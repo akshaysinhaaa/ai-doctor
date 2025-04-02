@@ -3,6 +3,7 @@ import { Pinecone } from '@pinecone-database/pinecone';
 import { queryPineconeVectorStore } from "@/utils";
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { StreamData, streamText } from "ai";
+import { LanguageModelV1 } from '@ai-sdk/provider';
 
 const google = createGoogleGenerativeAI({
     baseURL: 'https://generativelanguage.googleapis.com/v1beta',
@@ -51,13 +52,13 @@ export async function POST(req:Request, res:Response){
         retrievals: retrievals
     });
 
-    // const result = await streamText({
-    //     model: model,
-    //     prompt: finalPrompt,
-    //     onFinish() {
-    //         data.close();
-    //     }
-    // });
+    const result = await streamText({
+        model: model as unknown as LanguageModelV1,
+        prompt: finalPrompt,
+        onFinish() {
+            data.close();
+        }
+    });
 
-    // return result.toDataStreamResponse({ data });
+    return result.toDataStreamResponse({ data });
 }
