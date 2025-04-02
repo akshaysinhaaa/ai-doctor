@@ -14,5 +14,9 @@ export async function POST(req:Request, res:Response){
     const searchQuery = `Represent this for searching relevant passages: patient medical report says: \n${reportData} \n\n ${userQuestion}`;
     const retrievals = await queryPineconeVectorStore(pc, 'medic', 'testspace', searchQuery)
 
+    //final prompt to the gemini api
+
+
+    
     return new Response("Success", {status: 200});
 }
