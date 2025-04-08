@@ -9,6 +9,7 @@ This project is built with the goal of assisting users in **understanding their 
     <img src="https://img.youtube.com/vi/KYCtHzIJP7o/maxresdefault.jpg" width="800" height="450" alt="AI Doctor Demo">
   </a>
 </div>
+😉 YouTube Video Demo, Click the image
 
 ## ✅ Features
 - [x] **Upload PDF/Image**: Upload lab reports in PDF or image format
