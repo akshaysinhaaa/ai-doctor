@@ -1,33 +1,44 @@
-# 🧠 AI Doctor – Smart Medical Report Assistant
+# AI Doctor - Medical Report Assistant
+[![Follow me on GitHub](https://img.shields.io/github/followers/akshaysinhaaa?label=Follow%20Me&style=social)](https://github.com/akshaysinhaaa)
+[![Twitter Follow](https://img.shields.io/twitter/follow/0xakshayyy?style=social)](https://x.com/0xakshayyy)
 
-AI Doctor is a powerful Next.js application that enables users to upload medical lab reports in **PDF** or **image** format, automatically converts **handwritten doctors' notes to readable text**, and allows users to **ask questions** about the report for AI-generated insights.
+This project is built with the goal of assisting users in **understanding their medical lab reports** using modern AI technologies — by combining OCR, LLMs, and vector databases for accurate, interactive explanations.
 
----
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/89068816/189344966-308d0dba-7b0a-4ef1-9063-21c58caa96ad.png">
+  <img src="https://user-images.githubusercontent.com/89068816/189345084-da46ecea-2954-4a7c-9100-97d59154e132.png">
+</picture>
 
-## 🚀 Features
+## ✅ Features
+- [x] **Upload PDF/Image**: Upload lab reports in PDF or image format
+- [x] **Handwriting Extraction**: Converts handwritten doctor notes into readable text
+- [x] **Query Your Report**: Ask health-related questions based on your specific report
+- [x] **Powered by Google Gemini**: Uses Gemini 1.5 Pro for medical QA
+- [x] **Contextual Answers with Pinecone**: Uses Pinecone DB for semantic search on Henry's Lab Manual (1800+ pages)
 
-- 🖼️ **Upload Reports:** Supports PDF and image formats
-- ✍️ **Handwriting OCR:** Converts handwritten notes into readable digital text
-- 💬 **Medical Q&A:** Ask personalized questions based on your lab report
-- 🧠 **Gemini AI:** Powered by Google’s Gemini 1.5 Pro model for deep clinical understanding
-- 📚 **Pinecone Search:** Uses Pinecone vector DB to reference **Henry’s Lab Manual (1800+ pages)** for clinical context
+📑 [Suggest More](https://github.com/akshaysinhaaa/ai-doctor/issues/new)
 
----
+## 📚 Tech Stack
+- **Next.js 15** - The React framework for production
+- **TypeScript** - For type safety and better code quality
+- **Tailwind CSS** - Utility-first CSS framework
+- **Google Gemini** - AI model for intelligent responses via `@ai-sdk/google`
+- **Pinecone** - Vector database for contextual search
+- **OCR Options** - Cloudinary AI / Tesseract.js / EasyOCR
 
-## ⚙️ Tech Stack
+## 🤔 FAQ
+- Is this a real medical diagnostic tool?
+  - No, AI Doctor is designed to help understand lab reports, not to replace professional medical advice.
+- Can I contribute?
+  - Yeah sure why not! Just open an issue, create a pull request.
+- How does it handle my medical data?
+  - Your data is processed locally and securely. We don't store any of your medical information.
 
-- **Framework:** [Next.js 15](https://nextjs.org/)
-- **AI Model:** [Google Gemini 1.5 Pro](https://ai.google.dev/)
-- **Vector Search:** [Pinecone](https://www.pinecone.io/)
-- **OCR Engine:** AI-based text extraction
-- **Streaming:** AI SDK for live streaming responses
-
----
-
-## 🛠️ Getting Started
-
-### 🔁 Clone the Repo
-
+## 📦 Installation
 ```bash
-git clone https://github.com/akshaysinhaaa/ai-doctor.git
+git clone https://github.com/your-username/ai-doctor.git
 cd ai-doctor
+npm install
+npm run dev
+```
+[![Hosted on Vercel](https://images.ctfassets.net/e5382hct74si/78Olo8EZRdUlcDUFQvnzG7/fa4cdb6dc04c40fceac194134788a0e2/1618983297-powered-by-vercel.svg)](https://ai-doctor-zeta.vercel.app/)
