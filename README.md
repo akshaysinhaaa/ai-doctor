@@ -5,15 +5,9 @@
 This project is built with the goal of assisting users in **understanding their medical lab reports** using modern AI technologies — by combining OCR, LLMs, and vector databases for accurate, interactive explanations.
 
 <div align="center">
-  <iframe 
-    width="800" 
-    height="450" 
-    src="https://youtu.be/KYCtHzIJP7o" 
-    title="AI Doctor Demo" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
-  </iframe>
+  <a href="https://www.youtube.com/watch?v=KYCtHzIJP7o">
+    <img src="https://img.youtube.com/vi/KYCtHzIJP7o/maxresdefault.jpg" width="800" height="450" alt="AI Doctor Demo">
+  </a>
 </div>
 
 ## ✅ Features
