@@ -4,10 +4,17 @@
 
 This project is built with the goal of assisting users in **understanding their medical lab reports** using modern AI technologies — by combining OCR, LLMs, and vector databases for accurate, interactive explanations.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/89068816/189344966-308d0dba-7b0a-4ef1-9063-21c58caa96ad.png">
-  <img src="https://user-images.githubusercontent.com/89068816/189345084-da46ecea-2954-4a7c-9100-97d59154e132.png">
-</picture>
+<div align="center">
+  <iframe 
+    width="800" 
+    height="450" 
+    src="https://youtu.be/KYCtHzIJP7o" 
+    title="AI Doctor Demo" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
 
 ## ✅ Features
 - [x] **Upload PDF/Image**: Upload lab reports in PDF or image format
