@@ -26,7 +26,6 @@ This project is built with the goal of assisting users in **understanding their 
 - **Tailwind CSS** - Utility-first CSS framework
 - **Google Gemini** - AI model for intelligent responses via `@ai-sdk/google`
 - **Pinecone** - Vector database for contextual search
-- **OCR Options** - Cloudinary AI / Tesseract.js / EasyOCR
 
 ## 🤔 FAQ
 - Is this a real medical diagnostic tool?
