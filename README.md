@@ -37,7 +37,7 @@ This project is built with the goal of assisting users in **understanding their 
 
 ## 📦 Installation
 ```bash
-git clone https://github.com/your-username/ai-doctor.git
+git clone https://github.com/akshaysinhaaa/ai-doctor.git
 cd ai-doctor
 npm install
 npm run dev
